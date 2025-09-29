@@ -1,62 +1,38 @@
-# r-ztm-f-d
+# Task Manager API
 
-# Title: Task Manager API
+A simple RESTful API built with Flask for managing tasks, including CRUD operations and JWT-based user authentication.
 
-## Objective:
-Build a RESTful API for a simple task manager application using either Flask or Django. The API should allow users to perform basic CRUD operations on tasks and should include user authentication.
+## Setup Instructions
 
-## Requirements:
+1. Clone the repository: git clone: https://github.com/k1rm4d4/taskManagerAPI
+2. Install dependencies: `pip install -r requirements.txt`
+3. Set up environment variables: Create .env file with:
+```
+DATABASE_URL="sqlite:///./tasks_manager.sqlite"
+SECRET_KEY="<your_secret_key>"
+JWT_ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
+   You can have any secret key for testing.
+   
+4. Initialize the database: 
+   From root of project, run: `alembic upgrade head`
 
-1. Task Model:
+## Running the Application
 
-* Create a model for tasks with the following fields:
-** id (auto-generated)
-** title (string)
-** description (text)
-** completed (boolean)
-** created_at (timestamp)
-** updated_at (timestamp)
+From root of project:
+1. Run the app: `flask --app app/ run`
+2. Access the API at http://localhost:5000/
+3. For Swagger UI: http://localhost:5000/swagger
 
-2. API Endpoints:
+## API Documentation
 
-* Implement the following endpoints:
-** GET /tasks: Retrieve a list of all tasks.
-** GET /tasks/{id}: Retrieve details of a specific task.
-** POST /tasks: Create a new task.
-** PUT /tasks/{id}: Update details of a specific task.
-** DELETE /tasks/{id}: Delete a specific task.
+- Swagger UI available at /swagger for interactive docs, including request/response examples.
 
-3. User Authentication:
+## Testing
 
-* Implement user authentication using either JWT or session-based authentication.
-* Users should be able to register and log in.
-* Only authenticated users should be able to create, update, or delete tasks.
+- Run tests(from root of project): `python3 -m pytest -q`
 
-4. Documentation:
+## Additional Notes
 
-* Provide clear and concise API documentation, including examples of requests and responses.
-* Use any documentation tool of your choice (e.g., Swagger, ReDoc).
-
-5. Testing:
-
-* Write unit tests to ensure the correctness of your API endpoints.
-* Include instructions on how to run the tests.
-
-## Bonus Points (Optional):
-
-* Implement pagination for the list of tasks.
-* Add filtering options for tasks (e.g., filter by completed status).
-* Include user roles (e.g., admin, regular user) with different permissions.
-
-## Submission:
-
-* Share your codebase via a version control system (e.g., GitHub).
-* Include a README.md file with instructions on how to set up and run the application.
-* Provide any additional notes or explanations you think are necessary.
-## Evaluation Criteria:
-
-* Code organization and structure.
-* Correct implementation of CRUD operations.
-* User authentication and authorization.
-* Quality and coverage of tests.
-* Clarity and completeness of documentation.
+- Authentication: Use /auth/register and /auth/login to get JWT. Protected routes require Bearer token.
