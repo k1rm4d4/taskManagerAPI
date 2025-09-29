@@ -2,11 +2,19 @@
 
 A simple RESTful API built with Flask for managing tasks, including CRUD operations and JWT-based user authentication.
 
+
+
 ## Setup Instructions
+
+NOTE: Root of project means the location where app, tests folder are present:
+```
+$ ls
+alembic  alembic.ini  app  README.md  requirements.txt  tasks_manager.sqlite  tests  venv
+```
 
 1. Clone the repository: git clone: https://github.com/k1rm4d4/taskManagerAPI
 2. Install dependencies: `pip install -r requirements.txt`
-3. Set up environment variables: Create .env file with:
+3. Set up environment variables: Create .env file in root of project with:
 ```
 DATABASE_URL="sqlite:///./tasks_manager.sqlite"
 SECRET_KEY="<your_secret_key>"
